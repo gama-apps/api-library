@@ -10,6 +10,6 @@ booksRouter.use(express.json());
 
 //endpoints
 booksRouter.route('/').get(getAllBooks);
-booksRouter.route('/').post(createBook)
+booksRouter.route('/register').post(createBook)
 
 module.exports = booksRouter;
