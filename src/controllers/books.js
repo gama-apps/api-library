@@ -13,6 +13,9 @@ const getAllBooks = async (req, res) => {
   }
 }
 
+const createBook = async (req, res) => {}
+
 module.exports = {
-  getAllBooks
+  getAllBooks,
+  createBook
 }

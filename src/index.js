@@ -17,7 +17,7 @@ const connectDb = async () => {
 const app = express();
 app.use(bodyParser.json())
 
-app.get('/', (res, req) => {
+app.get('/', (req, res) => {
   res.send('app de biblioteca')
 })
 
