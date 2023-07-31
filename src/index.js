@@ -17,12 +17,12 @@ const connectDb = async () => {
 const app = express();
 app.use(bodyParser.json())
 
-// routes
-app.use('/api/libros', booksRouters);
-
 app.get('/', (res, req) => {
   res.send('app de biblioteca')
 })
+
+// routes
+app.use('/api/libros', booksRouters);
 
 const PORT = process.env.PORT || 3006;
 
