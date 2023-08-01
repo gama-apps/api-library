@@ -9,13 +9,22 @@ const getAllBooks = async (req, res) => {
   }
 }
 
+const getBookCategory = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
 const createBook = async (req, res) => {
   try {
     const bookData = req.body
     const books = await new Books(bookData).save();
-    res.status(201).json(books)
+    console.log(books);
+    res.status(201).json(books);
   } catch (error) {
-    res.status(500).send(`No se pudo registrar un nuevo libro :c`)
+    res.status(500).send(`No se pudo registrar el libro :c`)
   }
 }
 
