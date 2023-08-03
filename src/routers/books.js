@@ -2,7 +2,8 @@ const express = require('express');
 const booksRouter = express.Router();
 const {
         getAllBooks, 
-        createBook
+        createBook,
+        updateBook
       } = require('../controllers/books') 
 
 //middleware
@@ -12,6 +13,7 @@ booksRouter.use(express.json());
 booksRouter.route('/').get(getAllBooks);
 booksRouter.route('/:category').get();
 booksRouter.route('/:name').get();
-booksRouter.route('/register').post(createBook).save;
+booksRouter.route('/register').post(createBook);
+booksRouter.route('/update').put(updateBook);
 
 module.exports = booksRouter;
