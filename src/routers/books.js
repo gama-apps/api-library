@@ -3,7 +3,8 @@ const booksRouter = express.Router();
 const {
         getAllBooks, 
         createBook,
-        updateBook
+        updateBook,
+        getBookCategory 
       } = require('../controllers/books') 
 
 //middleware
@@ -11,7 +12,7 @@ booksRouter.use(express.json());
 
 //endpoints
 booksRouter.route('/').get(getAllBooks);
-booksRouter.route('/:category').get();
+booksRouter.route('/:category').get(getBookCategory );
 booksRouter.route('/:name').get();
 booksRouter.route('/register').post(createBook);
 booksRouter.route('/update').put(updateBook);

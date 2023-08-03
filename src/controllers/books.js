@@ -12,9 +12,11 @@ const getAllBooks = async (req, res) => {
 
 const getBookCategory = async (req, res) => {
   try {
-    
+    const bookCategory = req.params.categoryName;
+    const books = await Books.find({ category: bookCategory });
+    res.status(200).json(books)
   } catch (error) {
-    
+    res.status(500).send(`No se encontro nigun libro :c`)
   }
 }
 
@@ -53,5 +55,6 @@ module.exports = {
 module.exports = {
   getAllBooks,
   createBook,
-  updateBook
+  updateBook,
+  getBookCategory 
 }
