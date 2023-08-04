@@ -13,7 +13,6 @@ booksRouter.use(express.json());
 //endpoints
 booksRouter.route('/').get(getAllBooks);
 booksRouter.route('/:category').get(getBookCategory );
-booksRouter.route('/:name').get();
 booksRouter.route('/register').post(createBook);
 booksRouter.route('/update').put(updateBook);
 

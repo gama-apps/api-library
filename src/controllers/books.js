@@ -1,4 +1,4 @@
-const Books = require('../models/books')
+const Books = require('../models/Books')
 const {v4: uuid} = require('uuid')
 
 const getAllBooks = async (req, res) => {
