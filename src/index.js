@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 // routes
 app.use('/api/libros', booksRouter);
-app.use('/api/category', categoryRouter)
+app.use('/api/category', categoryRouter);
 
 const PORT = process.env.PORT || 3006;
 
