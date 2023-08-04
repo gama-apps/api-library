@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const collectionName = "s_books";
 
 const schema = Schema({
-  _id: { type: String, require: true },
+  _id: { type: String },
   name: { type: String },
   author: { type: String },
   year: { type: String },

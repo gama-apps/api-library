@@ -1,4 +1,5 @@
 const Books = require('../models/books')
+const {v4: uuid} = require('uuid')
 
 const getAllBooks = async (req, res) => {
   try {
@@ -9,17 +10,51 @@ const getAllBooks = async (req, res) => {
   }
 }
 
-const createBook = async (req, res) => {
+const getBookCategory = async (req, res) => {
   try {
-    const bookData = req.body
-    const books = await new Books(bookData).save();
-    res.status(201).json(books)
+    const bookCategory = req.params.categoryName;
+    const books = await Books.find({ category: bookCategory });
+    res.status(200).json(books)
   } catch (error) {
-    res.status(500).send(`No se pudo registrar un nuevo libro :c`)
+    res.status(500).send(`No se encontro nigun libro :c`)
   }
 }
 
+const createBook = async (req, res) => {
+  try {
+    const bookData = req.body
+    bookData._id = uuid()
+    const books = await new Books(bookData).save();
+    res.status(200).json(books);
+  } catch (error) {
+    res.status(500).send(`No se pudo registrar el libro :c`)
+
+  }
+}
+
+const updateBook = async (req, res) => {
+  try {
+    const updateBookId = req.params._id;
+    const bookData = req.body;
+    const updatedBook = await Books.findByIdAndUpdate(updateBookId, bookData, { new: true });
+
+    if (!updatedBook) {
+      return res.status(404).send('Libro no encontrado');
+    }
+    res.status(200).json(updatedBook);
+  } catch (error) {
+    res.status(500).send(`Error al actualizar el libro: ${error.message}`);
+  }
+};
+
+module.exports = {
+  updateBook,
+};
+
+
 module.exports = {
   getAllBooks,
-  createBook
+  createBook,
+  updateBook,
+  getBookCategory 
 }
