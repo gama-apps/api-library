@@ -20,7 +20,6 @@ const getBookCategory = async (req, res) => {
   }
 }
 
-
 const createBook = async (req, res) => {
   try {
     const bookData = req.body

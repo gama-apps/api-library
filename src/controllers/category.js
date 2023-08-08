@@ -50,5 +50,6 @@ const updateCategory = async (req, res) => {
 
 module.exports = {
   getCategory,
-  createCategory
+  createCategory,
+  getCategoryBook
 }
