@@ -12,13 +12,14 @@ const getAllBooks = async (req, res) => {
 
 const getBookCategory = async (req, res) => {
   try {
-    const bookCategory = req.params.categoryName;
-    const books = await Books.find({ category: bookCategory });
+    const bookCategory = req.params.categoryId;
+    const books = await Books.find({ bookCategory });
     res.status(200).json(books)
   } catch (error) {
     res.status(500).send(`No se encontro nigun libro :c`)
   }
 }
+
 
 const createBook = async (req, res) => {
   try {

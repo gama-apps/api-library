@@ -10,6 +10,24 @@ const getCategory = async (req, res) => {
   }
 }
 
+const getCategoryBook = async (req, res) => {
+  try {
+    const category = await Category.aggregate([
+      {
+        $lookup: {
+          from: 's_books', // Nombre de la colección de libros en tu base de datos
+          localField: '_id',
+          foreignField: 'categoryId',
+          as: 'books'
+        }
+      }
+      ]);
+    res.status(200).json(category);
+  } catch (error) {
+    res.status(500).send('No se encontro ninguna categoría :c')
+  }
+}
+
 const createCategory = async (req, res) => {
   try {
     const categoryData = req.body;
