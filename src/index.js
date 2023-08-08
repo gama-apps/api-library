@@ -1,7 +1,8 @@
 const express = require('express');
 const { connect } = require('mongoose');
-const booksRouters = require('./routers/books');
 const bodyParser = require('body-parser');
+const booksRouter = require('./routers/books');
+const categoryRouter = require('./routers/category');
 
 const db = process.env.MONGODB || 'mongodb://localhost:27017/api_library';
 
@@ -22,7 +23,8 @@ app.get('/', (req, res) => {
 })
 
 // routes
-app.use('/api/libros', booksRouters);
+app.use('/api/libros', booksRouter);
+app.use('/api/category', categoryRouter);
 
 const PORT = process.env.PORT || 3006;
 
