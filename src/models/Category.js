@@ -4,7 +4,7 @@ const collectionName = 's_category';
 const schema = Schema({
   _id: { type: String, require: true },
   name: { type: String },
-  key: { type: String, unique: true },
+  key: { type: String, unique: true, require: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   isRemove: { type: Boolean, default: false },
