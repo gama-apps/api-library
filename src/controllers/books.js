@@ -48,11 +48,6 @@ const updateBook = async (req, res) => {
 };
 
 module.exports = {
-  updateBook,
-};
-
-
-module.exports = {
   getAllBooks,
   createBook,
   updateBook,
