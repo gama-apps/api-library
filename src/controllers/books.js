@@ -47,9 +47,20 @@ const updateBook = async (req, res) => {
   }
 };
 
+const deleteBook = async () => {
+  try {
+    const deleteBookId = req.params._id;
+    const deleteBook = await Books.findByIdAndRemove(deleteBookId)
+    res.status(200).json(deleteBook);
+  } catch (error) {
+    es.status(500).send(`Error al eliminar el libro: ${error.message}`);
+  }
+}
+
 module.exports = {
   getAllBooks,
   createBook,
   updateBook,
-  getBookCategory 
+  getBookCategory,
+  
 }
