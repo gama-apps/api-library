@@ -42,9 +42,16 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   try {
-    
+    const updateCategoryId = req.params._id;
+    const categoryData = req.body;
+    const updatedCategory = await Category.findByIdAndUpdate(updateCategoryId, categoryData, { new: true });
+
+    if (!updatedCategory) {
+      return res.status(404).send('categoria no encontrada');
+    }
+    res.status(200).json(updatedCategory);
   } catch (error) {
-    res.status(500).send('No se pudo actualizar el libro :c')
+    res.status(500).send('No se pudo actualizar la categoria :c')
   }
 }
 
