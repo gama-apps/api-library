@@ -62,5 +62,5 @@ module.exports = {
   createBook,
   updateBook,
   getBookCategory,
-  
+  deleteBook
 }

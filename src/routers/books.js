@@ -4,7 +4,8 @@ const {
         getAllBooks, 
         createBook,
         updateBook,
-        getBookCategory 
+        getBookCategory,
+        deleteBook 
       } = require('../controllers/books') 
 
 //middleware
@@ -15,6 +16,5 @@ booksRouter.route('/').get(getAllBooks);
 booksRouter.route('/:category').get(getBookCategory );
 booksRouter.route('/newBook').post(createBook);
 booksRouter.route('/update').put(updateBook);
-
-
+booksRouter.route('/delete').delete(deleteBook);
 module.exports = booksRouter;
