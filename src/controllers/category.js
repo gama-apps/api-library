@@ -15,7 +15,7 @@ const getCategoryBook = async (req, res) => {
     const category = await Category.aggregate([
       {
         $lookup: {
-          from: 's_books', // Nombre de la colección de libros en tu base de datos
+          from: 's_books',
           localField: '_id',
           foreignField: 'categoryId',
           as: 'books'
@@ -32,7 +32,7 @@ const createCategory = async (req, res) => {
   try {
     const categoryData = req.body;
     categoryData._id = uuid();
-    categoryData.key = "S-" + key.trim().slice(0, 3).toUpperCase();
+    categoryData.key = categoryData.name.trim().toLowerCase().replaceAll(" ", "_");
     const newCategory = await new Category(categoryData).save();
     res.status(201).json(newCategory);
   } catch (error) {
@@ -42,9 +42,16 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   try {
-    
+    const updateCategoryId = req.params._id;
+    const categoryData = req.body;
+    const updatedCategory = await Category.findByIdAndUpdate(updateCategoryId, categoryData, { new: true });
+
+    if (!updatedCategory) {
+      return res.status(404).send('categoria no encontrada');
+    }
+    res.status(200).json(updatedCategory);
   } catch (error) {
-    res.status(500).send('No se pudo actualizar el libro :c')
+    res.status(500).send('No se pudo actualizar la categoria :c')
   }
 }
 
