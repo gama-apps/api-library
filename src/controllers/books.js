@@ -65,5 +65,3 @@ module.exports = {
   deleteBook
 }
 
-//solo por no dejar el github vacio xd
-//sisas
