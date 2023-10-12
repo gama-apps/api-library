@@ -3,9 +3,11 @@ const { connect } = require('mongoose');
 const bodyParser = require('body-parser');
 const booksRouter = require('./routers/books');
 const categoryRouter = require('./routers/category');
+const dotenv = require('dotenv')
+dotenv.config()
 
 //const db = process.env.MONGODB || 'mongodb://localhost:27017/api_library';
-const db = 'mongodb+srv://salvarsadev13:FoZPp3utgGL1oVk7@app-library.x7rlvlj.mongodb.net/app-library'
+const db = process.env.MONGODB
 
 
 const connectDb = async () => {
