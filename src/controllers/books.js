@@ -66,4 +66,4 @@ module.exports = {
 }
 
 //crear el upload para subir imagenes
-//hola desde linux
+//hola desde linux sisas
