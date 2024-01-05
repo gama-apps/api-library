@@ -68,6 +68,4 @@ module.exports = {
   deleteBook
 }
 
-//crear el upload para subir imagenes
-//eso no se guuardo
-//sisas
+
