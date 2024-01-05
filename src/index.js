@@ -6,13 +6,13 @@ const categoryRouter = require('./routers/category');
 const dotenv = require('dotenv')
 dotenv.config()
 
-//const db = process.env.MONGODB || 'mongodb://localhost:27017/api_library';
-const db = process.env.MONGODB
+const db = process.env.MONGODB || 'mongodb://localhost:27017/api_library';
+//const db = process.env.MONGODB
 
 
 const connectDb = async () => {
     try {
-        await connect(db);
+        await connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('DB CONNECTED..');
     } catch (error) {
         console.error('DB CONNECTION ERROR:', error);

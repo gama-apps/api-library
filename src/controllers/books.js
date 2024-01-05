@@ -49,8 +49,8 @@ const updateBook = async (req, res) => {
 
 const deleteBook = async (req, res) => {
   try {
-    const deleteBookId = req.params._id;
-    const deleteBook = await Books.findByIdAndRemove(deleteBookId);
+    const getBook = req.params._id;
+    const deleteBook = await Books.findByIdAndRemove(getBook);
     if (!deleteBook) {
       return res.status(404).json({ error: 'Libro no encontrado' });
     }
@@ -59,6 +59,18 @@ const deleteBook = async (req, res) => {
     res.status(500).send(`Error al eliminar el libro: ${error.message}`);
   }
 };
+
+// const getBook = async (req, res, next) => {
+//   let book
+//   try {
+//     book = await Books.find(req.params._id)
+//     if(book === null){
+//       return res.status(404).json({error: 'Libro no encontrado'})
+//     }
+//   } catch (error) {
+//     return res.status(500).json({error: `No se encontro nigun libro :c`})
+//   }
+// }
 
 module.exports = {
   getAllBooks,
